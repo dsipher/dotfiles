@@ -33,7 +33,7 @@ alias auditit='auditctl -a exit,always -F arch=b64 -S all'
 alias ls='ls --color=always'
 alias ll='ls -l --color=always'
 alias grep='grep --color'
-alias img='docker image'
+#alias img='docker image'
 alias vim='nvim'
 
 # Load .bashrc and other files...
