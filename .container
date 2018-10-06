@@ -1,0 +1,24 @@
+#!/bin/bash
+# Container functions
+
+fire(){
+	sudo systemd-nspawn \
+		        --setenv=DISPLAY=:0 \
+			--setenv=XAUTHORITY=~/.Xauthority \
+			--bind-ro=$HOME/.Xauthority:/root/.Xauthority \
+			--bind=/tmp/.X11-unix \
+			-UD ~/container/firefox \
+			firefox
+
+}
+
+signal(){
+	sudo systemd-nspawn \
+         	        --setenv=DISPLAY=:0 \
+			--setenv=XAUTHORITY=~/.Xauthority \
+			--bind-ro=$HOME/.Xauthority:/root/.Xauthority \
+			--bind=/tmp/.X11-unix \
+			-UD /var/lib/machines/signal \
+			signal-desktop
+
+}

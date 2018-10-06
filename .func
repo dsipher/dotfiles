@@ -1,0 +1,40 @@
+#!/bin/bash
+# Helper functions
+
+# Del container image files
+rmimg(){
+	sudo rm -r ~/.local/share/img
+}
+
+# Create a new directory and enter it
+mkd() {
+	mkdir -p "$@"
+	cd "$@" || exit
+}
+
+# Use feh to view images
+openimg() {
+	local types='*.jpg *.JPG *.png *.PNG *.gif *.GIF *.jpeg *.JPEG'
+
+	cd "$(dirname "$1")" || exit
+	local file
+	file=$(basename "$1")
+
+	feh -q "$types" --auto-zoom \
+		--sort filename --borderless \
+		--scale-down --draw-filename \
+		--image-bg black \
+		--start-at "$file"
+}
+
+# Get dbus session
+dbs() {
+	local t=$1
+	if [[  -z "$t" ]]; then
+		local t="session"
+	fi
+
+	dbus-send --$t --dest=org.freedesktop.DBus \
+		--type=method_call	--print-reply \
+		/org/freedesktop/DBus org.freedesktop.DBus.ListNames
+}
