@@ -4,17 +4,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Promt
+# Prompt
 PS1='\u \w\$ ' 
-#PS1='\e[1;35m\u\e[0m at \e[1;32m\h\e[0m \e[1;33min \w\e[0m \e[1;36m\d\e[0m \e[1;34m\t\e[0m \n ' 
 
 # Aliases
+alias vim='nvim'
 alias status='systemctl status'
 #alias auditit='auditctl -a exit,always -F arch=b64 -S all'
-alias ls='ls --color=always'
-alias ll='ls -l --color=always'
+
+alias ls='ls --color=auto'
+alias ll='ls -l --color=auto'
 alias grep='grep --color'
-alias vim='nvim'
+alias ip='ip -c'
 
 # Load .bashrc and other files...
 for file in ~/.{func,container}; do
